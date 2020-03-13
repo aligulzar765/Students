@@ -1,0 +1,17 @@
+<div class="container mt-5">
+    <h1>Course Detail</h1>
+    <div class="row" *ngIf="course">
+        <div class="col">
+            <div class="card mb-3">
+                <div class="card-body">
+                    <h4>Course Id: {{course.id}}</h4>  
+                    <h5 class="card-title">Name: {{course.name}}</h5>
+                    <h6>Duration: {{course.duration}}</h6>
+                    <p class="card-text">Fee: {{course.fee}}</p>
+                    <p>startDate: {{course.startDate}}</p>
+                    <a routerLink = "/courses" class="btn btn-primary">Go Back</a>
+                </div>
+            </div>
+        </div>        
+    </div>
+</div>

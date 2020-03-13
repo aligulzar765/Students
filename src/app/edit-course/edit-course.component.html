@@ -1,0 +1,22 @@
+<div class="container py-5 mb-5" *ngIf="course">
+    <h1>Edit Course</h1>
+    <form [formGroup] = "edit_Course" (ngSubmit)="editCourse()">
+        <div class="form-group">
+        <label for="courseName">Course Name:</label>
+        <input type="text" class="form-control" id="courseName" formControlName="name" [(ngModel)]=course.name required>
+        </div>
+        <div class="form-group">
+            <label for="duration">Duration:</label>
+            <input type="text" class="form-control" id="duraion" formControlName="duration" [(ngModel)]=course.duration required>
+        </div>
+        <div class="form-group">
+            <label for="fee">Fee:</label>
+            <input type="text" class="form-control" id="fee" formControlName="fee" [(ngModel)]=course.fee required>
+        </div>
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" class="form-control" id="startDate" formControlName="startDate" [(ngModel)]=course.startDate required>
+        </div>
+        <button type="submit" class="btn btn-primary">Edit</button>
+    </form>
+</div>
