@@ -35,7 +35,6 @@ export class EditStudentComponent implements OnInit {
     this.studentService.getStudent(id).subscribe({
         next: (std) => {
           this.edit_Student.patchValue(std);
-          console.log(this.edit_Student.value);
         }
       });
      

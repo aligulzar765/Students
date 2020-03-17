@@ -23,7 +23,6 @@ export class AddCourseComponent implements OnInit {
   }
 
   addCourse(){
-    console.log(this.new_Course.value);
     this.courseService.addCourse(this.new_Course).subscribe(()=>{
       this.router.navigate(['/courses']);
     });
