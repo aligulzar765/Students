@@ -1,30 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Courses } from './courses';
+import { Course } from './course';
 
 @Injectable({
   providedIn: 'root'
 })
-export class CoursesService {
+export class CourseService {
 
   apiUrl = `https://sis-rest-api.herokuapp.com/api/courses`;
 
   constructor(private http : HttpClient,) { }
 
-  getCourses():Observable<Courses[]>{
-    return this.http.get<Courses[]>(this.apiUrl);
+  getCourses():Observable<Course[]>{
+    return this.http.get<Course[]>(this.apiUrl);
   }
 
-  getCourse(id:number):Observable<Courses>{
+  getCourse(id:number):Observable<Course>{
     const courseUrl = `${this.apiUrl}/${id}`;
-    return this.http.get<Courses>(courseUrl);
+    return this.http.get<Course>(courseUrl);
   }
 
-  editCourse(id:number,course):Observable<Courses>{
+  editCourse(id:number,course):Observable<Course>{
     const courseDetail = course.value;
     const courseUrl = `${this.apiUrl}/${id}`;
-    return this.http.put<Courses>(courseUrl,courseDetail);
+    return this.http.put<Course>(courseUrl,courseDetail);
   }
 
   deleteCourse(id:number):Observable<{}>{
@@ -32,9 +32,9 @@ export class CoursesService {
     return this.http.delete(courseUrl);
   }
   
-  addCourse(course):Observable<Courses>{
+  addCourse(course):Observable<Course>{
     const courseDetail = course.value;
-    return this.http.post<Courses>(this.apiUrl,courseDetail);
+    return this.http.post<Course>(this.apiUrl,courseDetail);
   }
   
 }

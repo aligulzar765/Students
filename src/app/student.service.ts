@@ -23,6 +23,7 @@ export class StudentService {
   }
 
   editStudent(id: number,student):Observable<Student>{
+    student.value.courseId = +student.value.courseId;
     const studentDetail = student.value;
     const url = `${this.apiUrl}/${id}`;
     return this.http.put<Student>(url,studentDetail);
@@ -34,6 +35,7 @@ export class StudentService {
   }
 
   addStudent(student) : Observable<Student> {
+    student.value.courseId = +student.value.courseId;
     const studentDetails = student.value;
     return this.http.post<Student>(this.apiUrl, studentDetails);
   }

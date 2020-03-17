@@ -8,7 +8,7 @@
                     <h5 class="card-title">Name: {{course.name}}</h5>
                     <h6>Duration: {{course.duration}}</h6>
                     <p class="card-text">Fee: {{course.fee}}</p>
-                    <p>startDate: {{course.startDate}}</p>
+                    <p>startDate: {{course.startDate | date : "dd/MM/yyyy"}}</p>
                     <a routerLink = "/courses" class="btn btn-primary">Go Back</a>
                 </div>
             </div>

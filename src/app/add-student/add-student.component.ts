@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { CoursesService } from '../courses.service';
-import { Courses } from '../courses';
+import { CourseService } from '../course.service';
+import { Course } from '../course';
 
 @Component({
   selector: 'app-add-student',
@@ -12,7 +12,7 @@ import { Courses } from '../courses';
 })
 export class AddStudentComponent implements OnInit {
 
-  courses:Courses[];
+  courses:Course[];
 
   new_Student = this.formBuilder.group({
     name:['',Validators.required],
@@ -25,7 +25,7 @@ export class AddStudentComponent implements OnInit {
   
 
 
-  constructor(private studentService : StudentService , private formBuilder : FormBuilder, private router : Router,private courseService :CoursesService) { }
+  constructor(private studentService : StudentService , private formBuilder : FormBuilder, private router : Router,private courseService :CourseService) { }
 
   ngOnInit(): void {
     this.getCourses();

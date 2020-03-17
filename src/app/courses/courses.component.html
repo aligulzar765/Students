@@ -8,10 +8,10 @@
                   <h5 class="card-title">Name: {{course.name}}</h5>
                   <h6>Duration: {{course.duration}}</h6>
                   <p class="card-text">Fee: {{course.fee}}</p>
-                  <p>startDate: {{course.startDate }}</p>
+                  <p>startDate: {{course.startDate | date : "dd/MM/yyyy"}}</p>
                   <a routerLink="/view-course/{{course.id}}" class="btn btn-primary mb-2 d-block">View Course</a>
                   <a routerLink="/edit-course/{{course.id}}" class="btn btn-primary mb-2 d-block">Edit Course</a>
-                  <a (click)="deleteCourse(course)" class="btn btn-primary d-block">Delete Course</a> 
+                  <button (click)="deleteCourse(course)" class="btn btn-primary d-block w-100">Delete Course</button> 
                 </div>
             </div>
         </div>        

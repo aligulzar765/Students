@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesService } from '../courses.service';
+import { CourseService } from '../course.service';
 import { FormBuilder, Validators } from '@angular/forms';
-import { Courses } from '../courses';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -11,7 +10,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class EditCourseComponent implements OnInit {
 
-  course:Courses;
 
   edit_Course = this.formBuilder.group({
     name:['',Validators.required],
@@ -19,7 +17,7 @@ export class EditCourseComponent implements OnInit {
     fee:[,Validators.required],
     startDate:[,Validators.required]
   });
-  constructor(private courseService : CoursesService, private formBuilder : FormBuilder,private route:ActivatedRoute, private router : Router) { }
+  constructor(private courseService : CourseService, private formBuilder : FormBuilder,private route:ActivatedRoute, private router : Router) { }
 
   ngOnInit(): void {
     this.getCourse();
@@ -28,7 +26,7 @@ export class EditCourseComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.courseService.getCourse(id).subscribe({
       next: (crs) => {
-         this.course = crs;
+         this.edit_Course.patchValue(crs);
       }
     });
   }

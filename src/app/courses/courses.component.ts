@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Courses } from './../courses';
-import { CoursesService } from '../courses.service';
+import { Course } from './../course';
+import { CourseService } from '../course.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -10,9 +10,9 @@ import { Router } from '@angular/router';
 })
 export class CoursesComponent implements OnInit {
 
-  courses : Courses[];
+  courses : Course[];
 
-  constructor(private courseService : CoursesService, private router : Router) { }
+  constructor(private courseService : CourseService, private router : Router) { }
 
   ngOnInit(): void {
     this.getCourses();
@@ -23,7 +23,7 @@ export class CoursesComponent implements OnInit {
       this.courses = resp;
     });
   }
-  deleteCourse(course:Courses){
+  deleteCourse(course:Course){
     this.courseService.deleteCourse(course.id).subscribe(
       ()=>{
       this.getCourses();

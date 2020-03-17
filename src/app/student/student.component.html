@@ -13,7 +13,7 @@
                         <p>Course Id: {{student.courseId}}</p>
                         <a routerLink="/view-student/{{ student.id }}" class="btn btn-primary mb-2 d-block">View Student</a>
                         <a routerLink="/edit-student/{{ student.id }}" class="btn btn-primary mb-2 d-block">Edit Student</a>
-                        <a (click)="deleteStudent(student)" class="btn btn-primary d-block">Delete Student</a> 
+                        <button (click)="deleteStudent(student)" class="btn btn-primary d-block w-100">Delete Student</button> 
                     </div>
                 </div>
             </div> 

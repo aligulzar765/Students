@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
-import { CoursesService } from '../courses.service';
+import { CourseService } from '../course.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -17,12 +17,13 @@ export class AddCourseComponent implements OnInit {
     startDate:[,Validators.required]
   }) 
 
-  constructor(private courseService:CoursesService,private formBuilder : FormBuilder,private router : Router) { }
+  constructor(private courseService:CourseService,private formBuilder : FormBuilder,private router : Router) { }
 
   ngOnInit(): void {
   }
 
   addCourse(){
+    console.log(this.new_Course.value);
     this.courseService.addCourse(this.new_Course).subscribe(()=>{
       this.router.navigate(['/courses']);
     });

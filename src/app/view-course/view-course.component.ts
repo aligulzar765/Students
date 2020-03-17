@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CoursesService } from '../courses.service';
+import { CourseService } from '../course.service';
 import { ActivatedRoute } from '@angular/router';
-import { Courses } from '../courses';
+import { Course } from '../course';
 
 
 @Component({
@@ -11,10 +11,10 @@ import { Courses } from '../courses';
 })
 export class ViewCourseComponent implements OnInit {
 
-  course :Courses;
+  course :Course;
 
   constructor(
-    private courseService : CoursesService,
+    private courseService : CourseService,
     private route : ActivatedRoute
     ) { }
 

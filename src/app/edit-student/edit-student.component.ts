@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { StudentService } from '../student.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { FormBuilder, Validators } from '@angular/forms';
-import { Courses } from '../courses';
-import { CoursesService } from '../courses.service';
+import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { Course } from '../course';
+import { CourseService } from '../course.service';
 
 @Component({
   selector: 'app-edit-student',
@@ -12,8 +12,7 @@ import { CoursesService } from '../courses.service';
 })
 export class EditStudentComponent implements OnInit {
 
-  student;
-  courses:Courses[];
+  courses:Course[];
 
   edit_Student = this.formBuilder.group({
     name:['',Validators.required],
@@ -25,7 +24,7 @@ export class EditStudentComponent implements OnInit {
   });
 
 
-  constructor(private studentService : StudentService, private route : ActivatedRoute, private formBuilder : FormBuilder, private router : Router,private courseService: CoursesService) { }
+  constructor(private studentService : StudentService, private route : ActivatedRoute, private formBuilder : FormBuilder, private router : Router,private courseService: CourseService) { }
 
   ngOnInit(): void {
     this.getStudent();
@@ -35,16 +34,17 @@ export class EditStudentComponent implements OnInit {
     const id = +this.route.snapshot.paramMap.get('id');
     this.studentService.getStudent(id).subscribe({
         next: (std) => {
-          this.student = std;
-          console.log(this.student.name);
+          this.edit_Student.patchValue(std);
+          console.log(this.edit_Student.value);
         }
       });
      
   }
   editStudent(): void {
     const id = +this.route.snapshot.paramMap.get('id');
-    this.studentService.editStudent(id,this.edit_Student).subscribe( res => {
+    this.studentService.editStudent(id,this.edit_Student).subscribe({ next : (res) => {
       this.router.navigate(['/students']);
+    }
     });
   }
   getCourses(){
