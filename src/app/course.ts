@@ -3,5 +3,5 @@ export interface Course {
     name: string, 
     duration: string, 
     fee: number, 
-    startDate: Date;
+    startDate: string;
 }
